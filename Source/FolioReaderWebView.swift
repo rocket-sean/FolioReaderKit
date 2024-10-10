@@ -43,6 +43,9 @@ open class FolioReaderWebView: WKWebView {
         self.readerContainer?.readerConfig.fileDelegate?.setURLSchemeHandler( config: configuration)
         super.init(frame: frame, configuration: configuration)
 
+        if #available(iOS 16.4, *) {
+            self.isInspectable = true
+        }
     }
 
     required public init?(coder aDecoder: NSCoder) {
