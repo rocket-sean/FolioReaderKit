@@ -114,6 +114,12 @@
 		B0D69CD31D0388EF003B4CCD /* JSQWebViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CCD1D0388EF003B4CCD /* JSQWebViewController.framework */; };
 		B0D69CD51D0388EF003B4CCD /* ZFDragableModalTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CCF1D0388EF003B4CCD /* ZFDragableModalTransition.framework */; };
 		B0D69CD61D0388EF003B4CCD /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CD01D0388EF003B4CCD /* ZipArchive.framework */; };
+		DC2991252CB7E002001BDEA8 /* rangy-classapplier.js in Resources */ = {isa = PBXBuildFile; fileRef = DC2991202CB7E002001BDEA8 /* rangy-classapplier.js */; };
+		DC2991262CB7E002001BDEA8 /* rangy-textrange.js in Resources */ = {isa = PBXBuildFile; fileRef = DC2991242CB7E002001BDEA8 /* rangy-textrange.js */; };
+		DC2991272CB7E002001BDEA8 /* rangy-highlighter.js in Resources */ = {isa = PBXBuildFile; fileRef = DC2991222CB7E002001BDEA8 /* rangy-highlighter.js */; };
+		DC2991282CB7E002001BDEA8 /* rangy-core.js in Resources */ = {isa = PBXBuildFile; fileRef = DC2991212CB7E002001BDEA8 /* rangy-core.js */; };
+		DC2991292CB7E002001BDEA8 /* rangy-serializer.js in Resources */ = {isa = PBXBuildFile; fileRef = DC2991232CB7E002001BDEA8 /* rangy-serializer.js */; };
+		DC29912A2CB7E002001BDEA8 /* mark.js in Resources */ = {isa = PBXBuildFile; fileRef = DC29911F2CB7E002001BDEA8 /* mark.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +210,12 @@
 		B0D69CCD1D0388EF003B4CCD /* JSQWebViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQWebViewController.framework; path = Carthage/Build/iOS/JSQWebViewController.framework; sourceTree = "<group>"; };
 		B0D69CCF1D0388EF003B4CCD /* ZFDragableModalTransition.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZFDragableModalTransition.framework; path = Carthage/Build/iOS/ZFDragableModalTransition.framework; sourceTree = "<group>"; };
 		B0D69CD01D0388EF003B4CCD /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
+		DC29911F2CB7E002001BDEA8 /* mark.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = mark.js; sourceTree = "<group>"; };
+		DC2991202CB7E002001BDEA8 /* rangy-classapplier.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "rangy-classapplier.js"; sourceTree = "<group>"; };
+		DC2991212CB7E002001BDEA8 /* rangy-core.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "rangy-core.js"; sourceTree = "<group>"; };
+		DC2991222CB7E002001BDEA8 /* rangy-highlighter.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "rangy-highlighter.js"; sourceTree = "<group>"; };
+		DC2991232CB7E002001BDEA8 /* rangy-serializer.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "rangy-serializer.js"; sourceTree = "<group>"; };
+		DC2991242CB7E002001BDEA8 /* rangy-textrange.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "rangy-textrange.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +327,12 @@
 				1A958F271D397BE900D56699 /* Fonts */,
 				1A9590141D397C1300D56699 /* Images.xcassets */,
 				1A958F261D397BE900D56699 /* Bridge.js */,
+				DC29911F2CB7E002001BDEA8 /* mark.js */,
+				DC2991202CB7E002001BDEA8 /* rangy-classapplier.js */,
+				DC2991212CB7E002001BDEA8 /* rangy-core.js */,
+				DC2991222CB7E002001BDEA8 /* rangy-highlighter.js */,
+				DC2991232CB7E002001BDEA8 /* rangy-serializer.js */,
+				DC2991242CB7E002001BDEA8 /* rangy-textrange.js */,
 				1A958F8F1D397BE900D56699 /* Style.css */,
 			);
 			path = Resources;
@@ -554,6 +572,12 @@
 				1A958FBA1D397BE900D56699 /* Lora-Italic.ttf in Resources */,
 				1A958FB21D397BE900D56699 /* Andada-Italic.otf in Resources */,
 				1A958FBF1D397BE900D56699 /* Raleway-Regular.ttf in Resources */,
+				DC2991252CB7E002001BDEA8 /* rangy-classapplier.js in Resources */,
+				DC2991262CB7E002001BDEA8 /* rangy-textrange.js in Resources */,
+				DC2991272CB7E002001BDEA8 /* rangy-highlighter.js in Resources */,
+				DC2991282CB7E002001BDEA8 /* rangy-core.js in Resources */,
+				DC2991292CB7E002001BDEA8 /* rangy-serializer.js in Resources */,
+				DC29912A2CB7E002001BDEA8 /* mark.js in Resources */,
 				1A958FBB1D397BE900D56699 /* Lora-Regular.ttf in Resources */,
 				1A958FB41D397BE900D56699 /* Lato-Bold.ttf in Resources */,
 				1A958FB31D397BE900D56699 /* Andada-Regular.otf in Resources */,
