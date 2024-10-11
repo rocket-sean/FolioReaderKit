@@ -354,51 +354,59 @@ extension FolioReader {
 extension FolioReader {
 
     /// Save Reader state, book, page and scroll offset.
-   @objc open func saveReaderState() {
-          guard isReaderOpen else {
-              return
-          }
-          guard let currentPage = self.readerCenter?.currentPage, let webView = currentPage.webView else {
-              return
-          }
-          let height = UIScreen.main.bounds.height - 75
-          webView.js("createSelectionFromPoint(0, 1, 250, \(height))")  { _ in }
-          let style = "last-read"
-          webView.js("getHighlightSerialization('\(style)')") { highlightAndReturn in
-          guard let jsonData = highlightAndReturn?.data(using: String.Encoding.utf8),
-              let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? NSArray,
-              let dic = json?.firstObject as? [String: String],
-              let rangyString = dic["rangy"]
-          else {
-              return
-          }
-          let rangy = FolioUtils.makeRangyValidIfNeeded(rangy: Highlight.typeTextContentWithLine + rangyString)
-          do {
-            let realm = try Realm()
-            realm.beginWrite()
-            let lastRead = FolioLastRead()
-            lastRead.bookId = self.readerCenter?.rwBook?.id ?? 0
-            lastRead.page = max( (self.readerCenter?.currentPageNumber ?? 0) - 1, 0 )
-            lastRead.position = rangy
-            lastRead.created = Date()
-            lastRead.modified = Date()
-            lastRead.filePath = currentPage.resource?.href
-            lastRead.pageOffsetX = webView.scrollView.contentOffset.x
-            lastRead.pageOffsetY = webView.scrollView.contentOffset.y
-            lastRead.fontSize = self.currentFontSize.rawValue
-            lastRead.isVertical = self.readerContainer?.readerConfig.scrollDirection.isVertical ?? false
-            lastRead.isLandscape = UIDevice.current.orientation.isLandscape
-            lastRead.subPage = (self.readerContainer?.readerConfig.scrollDirection.isVertical == true) ?
-                Int(webView.scrollView.contentOffset.y / UIScreen.main.bounds.size.height) :
-                Int(webView.scrollView.contentOffset.x / UIScreen.main.bounds.size.width)
-            lastRead.pageSize = "\(Int(UIScreen.main.bounds.size.width))x\(Int(UIScreen.main.bounds.size.height))"
-            realm.add(lastRead, update: .all)
-            try realm.commitWrite()
-          } catch {
-              print("Error on persist last read: \(error)")
-          }
-          }
-      }
+    @objc open func saveReaderState() {
+        guard isReaderOpen else {
+           return
+        }
+        
+        guard let currentPage = self.readerCenter?.currentPage, let webView = currentPage.webView else {
+           return
+        }
+        
+        let height = UIScreen.main.bounds.height - 75
+        webView.js("createSelectionFromPoint(0, 1, 250, \(height))")  { _ in }
+        
+        let style = "last-read"
+        webView.js("getHighlightSerialization('\(style)')") { highlightAndReturn in
+        
+            guard let jsonData = highlightAndReturn?.data(using: String.Encoding.utf8),
+                 let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? NSArray,
+                 let dic = json?.firstObject as? [String: String],
+                 let rangyString = dic["rangy"]
+            else {
+               return
+            }
+            
+            let rangy = FolioUtils.makeRangyValidIfNeeded(rangy: Highlight.typeTextContentWithLine + rangyString)
+            
+            do {
+                let realm = try Realm()
+                realm.beginWrite()
+                
+                let lastRead = FolioLastRead()
+                lastRead.bookId = self.readerCenter?.rwBook?.id ?? 0
+                lastRead.page = max( (self.readerCenter?.currentPageNumber ?? 0) - 1, 0 )
+                lastRead.position = rangy
+                lastRead.created = Date()
+                lastRead.modified = Date()
+                lastRead.filePath = currentPage.resource?.href
+                lastRead.pageOffsetX = webView.scrollView.contentOffset.x
+                lastRead.pageOffsetY = webView.scrollView.contentOffset.y
+                lastRead.fontSize = self.currentFontSize.rawValue
+                lastRead.isVertical = self.readerContainer?.readerConfig.scrollDirection.isVertical ?? false
+                lastRead.isLandscape = UIDevice.current.orientation.isLandscape
+                lastRead.subPage = (self.readerContainer?.readerConfig.scrollDirection.isVertical == true) ?
+                    Int(webView.scrollView.contentOffset.y / UIScreen.main.bounds.size.height) :
+                    Int(webView.scrollView.contentOffset.x / UIScreen.main.bounds.size.width)
+                lastRead.pageSize = "\(Int(UIScreen.main.bounds.size.width))x\(Int(UIScreen.main.bounds.size.height))"
+               
+                realm.add(lastRead, update: .all)
+                try realm.commitWrite()
+            } catch {
+                print("Error on persist last read: \(error)")
+            }
+        }
+    }
 
     /// Closes and save the reader current instance.
     open func close() {
