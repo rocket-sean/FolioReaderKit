@@ -856,10 +856,11 @@ function createSelectionFromPoint(startX, startY, endX, endY) {
         range.setEnd(end.offsetNode, end.offset);
     } else if (typeof doc.caretRangeFromPoint != "undefined") {
         start = doc.caretRangeFromPoint(startX, startY);
-        end = doc.caretRangeFromPoint(endX, endY);
+        //end = doc.caretRangeFromPoint(endX, endY);
         range = doc.createRange();
         range.setStart(start.startContainer, start.startOffset);
-        range.setEnd(end.startContainer, end.startOffset);
+        //range.setEnd(end.startContainer, end.startOffset);
+        range.setEndAfter(start.endContainer);
     }
     if (range !== null && typeof window.getSelection != "undefined") {
         var sel = window.getSelection();
